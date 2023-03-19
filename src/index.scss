@@ -1,0 +1,12 @@
+@import "./style/reset.scss";
+@import "./style/vars";
+
+html {
+	font-size: 62.5%;
+}
+
+.container {
+	max-width: $container-width;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}

@@ -1,0 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body,
+#root {
+	height: 100%;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+ul,
+li {
+	list-style: none;
+}
+img {
+	width: 100%;
+	display: block;
+	vertical-align: top;
+}
+button,
+input {
+	border: none;
+	background-color: transparent;
+	font-size: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+:focus,
+:active {
+	outline: none;
+}
+a:focus,
+a:active {
+	outline: none;
+}
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+button,
+a {
+	cursor: pointer;
+}

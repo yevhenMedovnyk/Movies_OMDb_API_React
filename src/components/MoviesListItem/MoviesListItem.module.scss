@@ -1,0 +1,26 @@
+.wrapper {
+	display: grid;
+	grid-template: 22rem min-content max-content / 1fr;
+}
+.poster {
+	overflow: hidden;
+	margin-bottom: 1.5rem;
+	cursor: pointer;
+	img {
+		height: 100%;;
+		transition: 0.3s;
+		object-fit: contain;
+		object-position: top;
+		&:hover {
+			transform: scale(1.07);
+		}
+	}
+}
+.title {
+	font-size: 1.8rem;
+	margin-bottom: 0.5em;
+}
+.year {
+	align-self: end;
+	font-size: 1.6rem;
+}
