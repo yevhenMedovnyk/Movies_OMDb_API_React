@@ -3,23 +3,8 @@ import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import styles from "./MoviesListItem.module.scss";
 
-import {addMovieToWant} from "../../features/moviesSlice";
-
-const MoviesListItem = ({Title, Year, Poster, id}) => {
-  const dispatch = useDispatch();
-  const {search} = useSelector((state) => state.movies);
-  const [inSearch, setInSearch] = useState(false);
-
-  useEffect(() => {
-    if (search?.some((item) => item.imdbID === id)) {
-      setInSearch(true);
-    }
-  }, [search, id]);
-
-  const addToWant = () => {
-    dispatch(addMovieToWant({Title, Year, Poster, id}));
-  };
-
+const MoviesListItem = ({ Title, Year, Poster, id }) => {
+	
   return (
     <li>
       <Link to={`/movie/${id}`} className={styles.wrapper}>

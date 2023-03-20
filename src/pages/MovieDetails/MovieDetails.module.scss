@@ -1,0 +1,103 @@
+@import "./../../style/vars";
+
+.wrapper {
+	padding: 2.5% 6%;
+}
+.header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+.textBlock {
+	margin-right: auto;
+}
+.headerInfo {
+	display: flex;
+	column-gap: 1em;
+}
+
+.title {
+	max-width: 15em;
+	font-size: 4rem;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	margin: 0 .4em 0.1em 0;
+}
+.headerInfo {
+	font-size: 1.4rem;
+	font-weight: 600;
+	opacity: 0.7;
+	overflowy: auto;
+}
+.rating {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 0.3em;
+	font-size: 1.6rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	margin-right: 1em;
+	text-align: center;
+}
+
+.ratingValue {
+	position: relative;
+	color: $secondary-font-color;
+	text-align: center;
+}
+.ratingValue::before{
+	position: absolute;
+	content: '';
+	top: 50%;
+	left: -2rem;
+	transform: translateY(-50%);
+	background: url('./../../images/star.svg') no-repeat;
+	width: 1.8rem;
+	height: 1.8rem;
+
+}
+.poster {
+	width: 30rem;
+	margin-right: 2%;
+}
+.genre {
+	color: $secondary-font-color;
+}
+
+.body {
+	display: flex;
+	background-color: $secondary-bg-color;
+	padding: 2%;
+}
+.info {
+	font-size: 2rem;
+	span {
+		color: $secondary-font-color;
+	}
+	p:not(:last-child) {
+		margin-bottom: 0.2em;
+	}
+}
+.addBtn {
+	color: $secondary-font-color;
+	font-size: 1.8rem;
+	border: 1px solid $secondary-font-color;
+	padding: 0.6em 0.4em;
+	border-radius: 3px;
+	transition: .3s;
+	&:hover {
+		color: #a98f1d;
+		border: 1px solid #a98f1d;
+	}
+}
+.remove{
+	margin-left: 2rem;
+	width: 1.8rem;
+	transition: .3s;
+	opacity: .7;
+	cursor: pointer;
+	&:hover {
+		opacity: 1;
+	}
+}

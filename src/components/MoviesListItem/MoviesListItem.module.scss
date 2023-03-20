@@ -7,10 +7,10 @@
 	margin-bottom: 1.5rem;
 	cursor: pointer;
 	img {
-		height: 100%;;
+		height: 100%;
 		transition: 0.3s;
 		object-fit: contain;
-		object-position: top;
+		object-position: top left;
 		&:hover {
 			transform: scale(1.07);
 		}
@@ -18,9 +18,10 @@
 }
 .title {
 	font-size: 1.8rem;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.1em;
 }
 .year {
 	align-self: end;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	opacity: .8;
 }

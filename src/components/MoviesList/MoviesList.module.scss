@@ -1,7 +1,15 @@
+@import './../../style/vars';
+
+
 .wrapper{
 	padding: 2.5% 6%;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 	gap: 3rem 2rem;
 	place-content: center;
+	margin-top: 3rem;
+}
+.bg{
+	background-color: $secondary-bg-color;
+
 }

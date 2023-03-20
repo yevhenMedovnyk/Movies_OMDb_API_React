@@ -2,6 +2,9 @@ import React from "react";
 import {NavLink, Link} from "react-router-dom";
 import styles from "./Header.module.scss";
 
+import login from "./../../images/login.svg";
+
+
 const Header = () => {
   return (
     <header className={styles.header}>
@@ -23,7 +26,9 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-          <NavLink className={styles.login}>Login</NavLink>
+          <NavLink className={styles.login}>
+            <img src={login} alt='login' />
+          </NavLink>
         </div>
       </div>
     </header>
