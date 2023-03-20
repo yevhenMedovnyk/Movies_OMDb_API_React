@@ -52,7 +52,7 @@ const Search = () => {
           </button>
         )}
       </div>
-      <PaginationRounded onPageChange={handleChangePage} page={currentPage} />
+      {search && <PaginationRounded onPageChange={handleChangePage} page={currentPage} />}
       <MoviesList movies={search} />
     </div>
   );

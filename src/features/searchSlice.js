@@ -6,7 +6,7 @@ export const searchMovies = createAsyncThunk(
   async (url, {rejectWithValue, dispatch}) => {
     try {
       const response = await axios.get(url);
-      dispatch(totalRes(response.data.totalMovieCount));
+      dispatch(totalRes(response.data.totalResults));
       return await response.data.Search;
     } catch (error) {
       console.log(error.message);
