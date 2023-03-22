@@ -1,5 +1,6 @@
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+
 import {searchMovies, setInputValue} from "./../../features/searchSlice";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import styles from "./Search.module.scss";
@@ -8,7 +9,8 @@ import {searchApi} from "../../services/movieApi";
 
 import clear from "./../../images/trash.svg";
 import PaginationRounded from "../../components/Pagination/Pagination";
-import {useLocation} from "react-router-dom";
+import {useLocation, useSearchParams} from "react-router-dom";
+import {useDebounce} from "../../hooks/useDebounce";
 
 const Search = () => {
   const location = useLocation();
@@ -19,18 +21,22 @@ const Search = () => {
   const [currentPage, setCurrentPage] = useState(parseInt(location.search.split("=")[1] || 1));
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    dispatch(searchMovies(searchApi(inputValue, currentPage)));
+  const debouncedValue = useCallback(useDebounce(inputValue, 400));
+
+	useEffect(() => {
+    dispatch(searchMovies(searchApi(debouncedValue, currentPage)));
     inputRef.current.focus();
-  }, [inputValue, dispatch, currentPage]);
+  }, [dispatch, currentPage, debouncedValue]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     dispatch(setInputValue(value));
   };
+
   const onClickClear = () => {
     dispatch(setInputValue(""));
   };
+
   const handleChangePage = (_, pageNum) => {
     setCurrentPage(pageNum);
   };
@@ -43,7 +49,7 @@ const Search = () => {
           onChange={handleInputChange}
           value={inputValue}
           type='text'
-          placeholder='Search'
+          placeholder='Search movie'
           className={styles.searchInput}
         />
         {inputValue && (
@@ -52,7 +58,9 @@ const Search = () => {
           </button>
         )}
       </div>
-      {search && <PaginationRounded onPageChange={handleChangePage} page={currentPage} />}
+      {search?.length > 0 && (
+        <PaginationRounded onPageChange={handleChangePage} page={currentPage} />
+      )}
       <MoviesList movies={search} />
     </div>
   );
