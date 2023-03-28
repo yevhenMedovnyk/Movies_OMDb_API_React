@@ -4,6 +4,8 @@ import MoviesList from "../../components/MoviesList/MoviesList";
 import styles from "./Want.module.scss";
 
 const Want = () => {
+
+
   const {want} = useSelector((state) => state.movies);
   return (
     <div className='container'>

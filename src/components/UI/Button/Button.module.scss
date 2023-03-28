@@ -1,0 +1,26 @@
+@import "./../../../style/vars";
+
+.btn {
+	border: 0.5px solid $accent-bg-color;
+	border-radius: 0.4rem;
+	height: 4.5rem;
+	padding: 0.1em 0.6em 0.1em 0.6em;
+	font-size: 1.8rem;
+	opacity: 0.7;
+	transition: 0.3s;
+	&:hover {
+		opacity: 1;
+	}
+	@media (max-width: 575px) {
+		font-size: 1.4rem;
+		height: 3.8rem;
+	}
+	@media (max-width: 390px) {
+		height: 3rem;
+		
+	}
+}
+
+.active {
+	opacity: 1;
+}
