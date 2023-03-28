@@ -13,6 +13,7 @@ import {
 import {movieApiWidthId} from "../../services/movieApi";
 
 import remove from "./../../images/trash.svg";
+import {setLocalStorage} from "../../services/localStorage";
 
 const MovieDetails = () => {
   const [inWant, setInWant] = useState(false);
@@ -30,7 +31,7 @@ const MovieDetails = () => {
   useEffect(() => {
     dispatch(fetchMovie(movieApiWidthId(id)));
   }, []);
-	
+
   useEffect(() => {
     if (want.find((item) => item.imdbID === id)) {
       setInWant(true);
@@ -56,37 +57,47 @@ const MovieDetails = () => {
               <span className={styles.runtime}>{details.Runtime}</span>
             </div>
           </div>
-          <div className={styles.rating}>
-            <span>IMDb RATING</span>
-            <p>
-              <span className={styles.ratingValue}>{details.imdbRating}</span> / 10
-            </p>
+          <div className={styles.headerRight}>
+            <div className={styles.rating}>
+              <span>IMDb RATING</span>
+              <p>
+                <span className={styles.ratingValue}>{details.imdbRating}</span> / 10
+              </p>
+            </div>
+            <div className={styles.btns}>
+              <button
+                disabled={inWatched ? true : false}
+                onClick={addToWatched}
+                className={styles.addBtn}
+              >
+                Watched
+              </button>
+              <button
+                disabled={inWant ? true : false}
+                onClick={addToWant}
+                className={styles.addBtn}
+              >
+                Want
+              </button>
+            </div>
+
+            {inWatched && (
+              <img
+                onClick={() => dispatch(removeFromWatched(id))}
+                className={styles.remove}
+                src={remove}
+                alt='remove'
+              />
+            )}
+            {inWant && (
+              <img
+                onClick={() => dispatch(removeFromWant(id))}
+                className={styles.remove}
+                src={remove}
+                alt='remove'
+              />
+            )}
           </div>
-          {inWant ? (
-            <button onClick={addToWatched} className={styles.addBtn}>
-              Watched +
-            </button>
-          ) : (
-            <button onClick={addToWant} className={styles.addBtn}>
-              Want +
-            </button>
-          )}
-          {inWatched && (
-            <img
-              onClick={() => dispatch(removeFromWatched(id))}
-              className={styles.remove}
-              src={remove}
-              alt='remove'
-            />
-          )}
-          {inWant && (
-            <img
-              onClick={() => dispatch(removeFromWant(id))}
-              className={styles.remove}
-              src={remove}
-              alt='remove'
-            />
-          )}
         </div>
         <div className={styles.body}>
           <div className={styles.poster}>

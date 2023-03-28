@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import styles from "./MoviesListItem.module.scss";
 
 const MoviesListItem = ({ Title, Year, Poster, id }) => {
 	
   return (
-    <li>
+    <li className={styles.border}>
       <Link to={`/movie/${id}`} className={styles.wrapper}>
         <div className={styles.poster}>
           <img src={Poster} alt={Title} />

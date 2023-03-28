@@ -13,6 +13,7 @@ export default function PaginationRounded({onPageChange, page}) {
   return (
     <Stack spacing={2}>
       <Pagination
+        siblingCount={0}
         page={page}
         count={Math.round(totalPageCount)}
         color='primary'

@@ -18,6 +18,8 @@ export const searchMovies = createAsyncThunk(
 const initialState = {
   search: [],
   inputValue: "",
+  type: "movie",
+  categoryId: 0,
   totalMovieCount: null,
   status: null,
   error: null,
@@ -29,6 +31,12 @@ const searchSlice = createSlice({
   reducers: {
     setInputValue: (state, action) => {
       state.inputValue = action.payload;
+    },
+    setType: (state, action) => {
+      state.type = action.payload;
+    },
+    setCategoryId: (state, action) => {
+      state.categoryId = action.payload;
     },
     totalRes: (state, action) => {
       state.totalMovieCount = action.payload;
@@ -49,5 +57,5 @@ const searchSlice = createSlice({
     },
   },
 });
-export const {setInputValue, totalRes} = searchSlice.actions;
+export const {setInputValue, totalRes, setType, setCategoryId} = searchSlice.actions;
 export default searchSlice.reducer;

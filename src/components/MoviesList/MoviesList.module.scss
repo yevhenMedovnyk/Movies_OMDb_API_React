@@ -1,15 +1,21 @@
-@import './../../style/vars';
+@import "./../../style/vars";
 
-
-.wrapper{
+.wrapper {
 	padding: 2.5% 6%;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 18rem));
 	gap: 3rem 2rem;
 	place-content: center;
-	margin-top: 3rem;
+	margin-top: 2rem;
+	@media (max-width: 462px) {
+		padding: 2.5% 3%;
+		grid-template-columns: repeat(auto-fill, minmax(12rem, 13rem));
+		gap: 2rem 1.5rem;
+	}
+	@media (max-width: 360px) {
+		grid-template-columns: repeat(auto-fill, minmax(11rem, 12rem));
+	}
 }
-.bg{
+.bg {
 	background-color: $secondary-bg-color;
-
 }

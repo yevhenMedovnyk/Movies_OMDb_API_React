@@ -8,13 +8,30 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 2% 0;
+	@media (max-width: 725px) {
+		justify-content: start;
+	}
+	@media (max-width: 415px) {
+		padding: 4% 0;
+	}
 }
 .logo {
+	z-index: 999;
+
 	display: block;
 	font-size: 3.4rem;
 	margin-right: 2rem;
 	span {
 		color: $secondary-font-color;
+	}
+	@media (max-width: 725px) {
+		margin-right: auto;
+	}
+	@media (max-width: 415px) {
+		font-size: 2.7rem;
+	}
+	@media (max-width: 375px) {
+		font-size: 2.4rem;
 	}
 }
 .menu {
@@ -24,6 +41,26 @@
 	display: flex;
 	justify-content: space-between;
 	column-gap: 4rem;
+	@media (max-width: 725px) {
+		z-index: 998;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		flex-direction: column;
+		justify-content: start;
+		align-items: center;
+		height: 100%;
+		background-color: #21252b;
+		padding-top: 30%;
+		row-gap: 2em;
+		transform: translateX(100%);
+		transition: 0.3s;
+	}
+}
+.list.opened {
+	transform: translateX(0);
 }
 .link {
 	font-size: 2.4rem;
@@ -32,6 +69,9 @@
 	&:hover {
 		color: $secondary-font-color;
 	}
+	@media (max-width: 725px) {
+		font-size: 3rem;
+	}
 }
 .link {
 	a:global(.active) {
@@ -39,9 +79,36 @@
 	}
 }
 .login {
+	z-index: 999;
 	width: 5rem;
 	transition: 0.3s;
 	&:hover {
 		opacity: 0.7;
+	}
+	@media (max-width: 575px) {
+		width: 4rem;
+	}
+	@media (max-width: 375px) {
+		width: 3.3rem;
+	}
+}
+.burgerBtn {
+	z-index: 999;
+	width: 3.3rem;
+	cursor: pointer;
+	display: none;
+	@media (max-width: 725px) {
+		display: block;
+		margin-right: 2.5rem;
+	}
+	@media (max-width: 575px) {
+		width: 3rem;
+	}
+
+	@media (max-width: 415px) {
+		margin-right: 2rem;
+	}
+	@media (max-width: 375px) {
+		width: 2.4rem;
 	}
 }

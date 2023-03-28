@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+import { getLocalStorage } from "../services/localStorage";
 
 export const fetchMovie = createAsyncThunk("movies/fetchMovie", async (url, {rejectWithValue}) => {
   try {
@@ -11,9 +12,11 @@ export const fetchMovie = createAsyncThunk("movies/fetchMovie", async (url, {rej
   }
 });
 
+
+
 const initialState = {
-  want: [],
-  watched: [],
+  want: getLocalStorage('want'),
+  watched: getLocalStorage('watched'),
   details: {},
   status: null,
   error: null,
