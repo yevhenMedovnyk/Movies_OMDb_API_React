@@ -6,6 +6,7 @@ import styles from "./Header.module.scss";
 import login from "./../../images/login.svg";
 import burger from "./../../images/burger.svg";
 import burgerClose from "./../../images/burger-close.svg";
+import Login from "../Login/Login";
 
 const menuLinks = [
   {to: "/", name: "Search"},
@@ -15,6 +16,11 @@ const menuLinks = [
 
 const Header = () => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+  const [isPopupOpened, setIsPopupOpened] = useState(false);
+
+  const openLoginForm = () => {
+    setIsPopupOpened(true);
+  };
 
   return (
     <header className={styles.header}>
@@ -26,10 +32,12 @@ const Header = () => {
           <nav className={styles.menu}>
             <ul className={[styles.list, isBurgerOpened ? styles.opened : ""].join(" ")}>
               {menuLinks.map((link) => (
-                <li key={link.name} onClick={() => setIsBurgerOpened(false)} className={styles.link}>
-                  <NavLink  to={link.to}>
-                    {link.name}
-                  </NavLink>
+                <li
+                  key={link.name}
+                  onClick={() => setIsBurgerOpened(false)}
+                  className={styles.link}
+                >
+                  <NavLink to={link.to}>{link.name}</NavLink>
                 </li>
               ))}
             </ul>
@@ -38,8 +46,9 @@ const Header = () => {
             <img src={isBurgerOpened ? burgerClose : burger} alt='burger btn' />
           </div>
           <NavLink className={styles.login}>
-            <img src={login} alt='login' />
+            <img onClick={openLoginForm} src={login} alt='login' />
           </NavLink>
+          <Login isPopupOpened={isPopupOpened} setIsPopupOpened={setIsPopupOpened} />
         </div>
       </div>
     </header>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./MovieDetails.module.scss";
 
@@ -13,9 +13,9 @@ import {
 import {movieApiWidthId} from "../../services/movieApi";
 
 import remove from "./../../images/trash.svg";
-import {setLocalStorage} from "../../services/localStorage";
 
 const MovieDetails = () => {
+  const navigate = useNavigate();
   const [inWant, setInWant] = useState(false);
   const [inWatched, setInWatched] = useState(false);
   const {id} = useParams();
@@ -27,6 +27,9 @@ const MovieDetails = () => {
   };
   const addToWatched = () => {
     dispatch(addMovieToWatched(details));
+  };
+  const onClickBack = () => {
+    navigate(-1);
   };
   useEffect(() => {
     dispatch(fetchMovie(movieApiWidthId(id)));
@@ -134,6 +137,9 @@ const MovieDetails = () => {
             </p>
           </div>
         </div>
+        <button onClick={onClickBack} className={styles.back}>
+          Back
+        </button>
       </div>
     </div>
   );
