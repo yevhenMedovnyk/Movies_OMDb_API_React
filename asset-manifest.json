@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/movies-omdb-api/static/css/main.0e2288be.css",
+    "main.js": "/movies-omdb-api/static/js/main.b0e080f9.js",
+    "static/media/login.svg": "/movies-omdb-api/static/media/login.0d09b576b76ab136ec683f6e7354e2fb.svg",
+    "index.html": "/movies-omdb-api/index.html",
+    "static/media/star.svg": "/movies-omdb-api/static/media/star.36feb5e52b8f6da1bec6.svg",
+    "static/media/trash.svg": "/movies-omdb-api/static/media/trash.7381b4eca635436f1140bae377ae983e.svg",
+    "static/media/burger-close.svg": "/movies-omdb-api/static/media/burger-close.94299de3a5a7848f2b15177b6490ee7d.svg",
+    "static/media/burger.svg": "/movies-omdb-api/static/media/burger.fff5ac4d9878f1e00c318de0ff60f143.svg",
+    "main.0e2288be.css.map": "/movies-omdb-api/static/css/main.0e2288be.css.map",
+    "main.b0e080f9.js.map": "/movies-omdb-api/static/js/main.b0e080f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e2288be.css",
+    "static/js/main.b0e080f9.js"
+  ]
+}
