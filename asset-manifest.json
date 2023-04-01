@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/movies-omdb-api/static/css/main.0e2288be.css",
-    "main.js": "/movies-omdb-api/static/js/main.b0e080f9.js",
-    "static/media/login.svg": "/movies-omdb-api/static/media/login.0d09b576b76ab136ec683f6e7354e2fb.svg",
-    "index.html": "/movies-omdb-api/index.html",
-    "static/media/star.svg": "/movies-omdb-api/static/media/star.36feb5e52b8f6da1bec6.svg",
-    "static/media/trash.svg": "/movies-omdb-api/static/media/trash.7381b4eca635436f1140bae377ae983e.svg",
-    "static/media/burger-close.svg": "/movies-omdb-api/static/media/burger-close.94299de3a5a7848f2b15177b6490ee7d.svg",
-    "static/media/burger.svg": "/movies-omdb-api/static/media/burger.fff5ac4d9878f1e00c318de0ff60f143.svg",
-    "main.0e2288be.css.map": "/movies-omdb-api/static/css/main.0e2288be.css.map",
-    "main.b0e080f9.js.map": "/movies-omdb-api/static/js/main.b0e080f9.js.map"
+    "main.css": "/Movies_OMDb_API_React/static/css/main.cb3861ff.css",
+    "main.js": "/Movies_OMDb_API_React/static/js/main.29c0dd5f.js",
+    "static/media/login.svg": "/Movies_OMDb_API_React/static/media/login.0d09b576b76ab136ec683f6e7354e2fb.svg",
+    "index.html": "/Movies_OMDb_API_React/index.html",
+    "static/media/star.svg": "/Movies_OMDb_API_React/static/media/star.36feb5e52b8f6da1bec6.svg",
+    "static/media/trash.svg": "/Movies_OMDb_API_React/static/media/trash.7381b4eca635436f1140bae377ae983e.svg",
+    "static/media/burger-close.svg": "/Movies_OMDb_API_React/static/media/burger-close.94299de3a5a7848f2b15177b6490ee7d.svg",
+    "static/media/burger.svg": "/Movies_OMDb_API_React/static/media/burger.fff5ac4d9878f1e00c318de0ff60f143.svg",
+    "main.cb3861ff.css.map": "/Movies_OMDb_API_React/static/css/main.cb3861ff.css.map",
+    "main.29c0dd5f.js.map": "/Movies_OMDb_API_React/static/js/main.29c0dd5f.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e2288be.css",
-    "static/js/main.b0e080f9.js"
+    "static/css/main.cb3861ff.css",
+    "static/js/main.29c0dd5f.js"
   ]
 }
