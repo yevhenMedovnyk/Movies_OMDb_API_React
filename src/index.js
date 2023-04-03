@@ -10,7 +10,7 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="Movies_OMDb_API_React">
     <Provider store={store}>
       <App />
     </Provider>
