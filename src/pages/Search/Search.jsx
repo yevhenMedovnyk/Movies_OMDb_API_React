@@ -28,7 +28,6 @@ const Search = () => {
 
   useEffect(() => {
     dispatch(searchMovies(searchApi(debouncedValue, currentPage, type)));
-    inputRef.current.focus();
   }, [dispatch, currentPage, debouncedValue, type]);
 
   const handleInputChange = (e) => {
@@ -37,7 +36,9 @@ const Search = () => {
   };
 
   const onClickClear = () => {
-    dispatch(setInputValue(""));
+	  dispatch(setInputValue(""));
+	  inputRef.current.focus();
+	  
   };
 
   const handleChangePage = (_, pageNum) => {
