@@ -41,25 +41,7 @@
 	font-size: 2.4rem;
 	margin-bottom: 0.7em;
 }
-.input {
-	font-size: 2rem;
-	width: 80%;
-	height: 4rem;
-	background-color: $light-bg-color;
-	margin-bottom: 2rem;
-	border-radius: 0.3rem;
-	padding: 0.5em;
-	text-align: center;
-	&:focus {
-		border: 1px solid $accent-bg-color;
-	}
-	&::placeholder {
-		font-size: 1.6rem;
-	}
-	@media (max-width: 390px){
-		width: 100%;
-	}
-}
+
 .loginBtn {
 	border: 0.5px solid $accent-bg-color;
 	border-radius: 0.4rem;
@@ -74,6 +56,9 @@
 	&:hover {
 		opacity: 1;
 	}
+	&:disabled{
+		opacity: .3;
+	}
 	@media (max-width: 575px) {
 		font-size: 1.4rem;
 		height: 3.8rem;
@@ -83,6 +68,7 @@
 		margin-right: 0;
 	}
 }
+
 .btns{
 	display: flex;
 	justify-content: space-between;
