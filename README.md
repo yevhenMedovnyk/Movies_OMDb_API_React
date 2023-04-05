@@ -10,6 +10,7 @@ On this site, you can search for movies and add them to your "want" or "watched"
 - React Router DOM
 - Redux Toolkit
 - Axios
+- REST API
 - MUI
 - SASS
 - Responsive web design
