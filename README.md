@@ -8,7 +8,7 @@ This project is created on ReactJS using "OMDb API"
 - ReactJS
 - React Router DOM
 - Redux Toolkit
-- Asix
+- Axios
 - MUI
 - SASS
 - Responsive web design
