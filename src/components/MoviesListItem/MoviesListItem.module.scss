@@ -3,16 +3,15 @@
 .wrapper {
 	display: grid;
 	grid-template: 22rem min-content max-content / 1fr;
-	@media (max-width: 462px){
+	@media (max-width: 462px) {
 		grid-template: min-content min-content max-content / 1fr;
-
 	}
 }
 .border {
 	border: 1px solid $permanent-bg-color;
 	padding: 0.7rem;
 	border-radius: 4px;
-	box-shadow: 0.2rem .3rem .7rem #6d6c6c11;
+	box-shadow: 0.2rem 0.3rem 0.7rem #6d6c6c11;
 }
 .poster {
 	overflow: hidden;
@@ -28,14 +27,17 @@
 			transform: scale(1.07);
 		}
 	}
-	@media (max-width: 462px){
+	@media (max-width: 462px) {
 		border: none;
 	}
 }
 .title {
 	font-size: 1.8rem;
 	margin-bottom: 0.1em;
-	@media (max-width: 462px){
+	@media (max-width: 462px) {
+		font-size: 1.4rem;
+	}
+	@media (max-width: 375px) {
 		display: none;
 	}
 }
@@ -43,7 +45,10 @@
 	align-self: end;
 	font-size: 1.4rem;
 	opacity: 0.8;
-	@media (max-width: 462px){
+	@media (max-width: 462px) {
+		font-size: 1.4rem;
+	}
+	@media (max-width: 375px) {
 		display: none;
 	}
 }
