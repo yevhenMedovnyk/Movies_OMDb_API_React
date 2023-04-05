@@ -1,7 +1,8 @@
 ## Movies_OMDb React Application
 This project is created on ReactJS using "OMDb API"
 
-- You can see the result here: [GitHub Pages](https://yevhenmedovnyk.github.io/Movies_OMDb_API_React/)
+### On this site, you can search for movies and add them to your "want" or "watched" list
+- You can try it here: [Movies_OMDb](https://yevhenmedovnyk.github.io/Movies_OMDb_API_React/)
 
 ---
 
