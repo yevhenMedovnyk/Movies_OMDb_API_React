@@ -11,6 +11,7 @@ On this site, you can search for movies and add them to your "want" or "watched"
 - Redux Toolkit
 - Axios
 - REST API
+- Firebase
 - MUI
 - SASS
 - Responsive web design
