@@ -1,21 +1,5 @@
 @import "./../../style/vars";
 
-.cover {
-	z-index: 1001;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 100vh;
-	justify-content: center;
-	background-color: $permanent-bg-color;
-	display: none;
-}
-.cover.opened {
-	display: flex;
-}
 .popup {
 	width: 40rem;
 	height: max-content;
@@ -56,8 +40,8 @@
 	&:hover {
 		opacity: 1;
 	}
-	&:disabled{
-		opacity: .3;
+	&:disabled {
+		opacity: 0.3;
 	}
 	@media (max-width: 575px) {
 		font-size: 1.4rem;
@@ -69,18 +53,21 @@
 	}
 }
 
-.btns{
+.btns {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 }
-.forget{
+.forget {
 	margin-left: 10%;
-	transition: .3s;
-	&:hover{
-		color: $secondary-font-color;
-	}
+
 	@media (max-width: 390px) {
 		margin-left: 0;
+	}
+	a {
+		transition: 0.3s;
+		margin-left: 0.5em;
+		color: $secondary-font-color;
+		font-size: 1.2rem;
 	}
 }

@@ -11,6 +11,7 @@ import {
   removeFromWatched,
 } from "../../features/movieSlice";
 import {movieApiWidthId} from "../../services/movieApi";
+import {useAuth} from "../../hooks/useAuth";
 
 import remove from "./../../images/trash.svg";
 
@@ -21,12 +22,21 @@ const MovieDetails = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
   const {details, want, watched} = useSelector((state) => state.movies);
+  const {isAuth} = useAuth();
 
   const addToWant = () => {
-    dispatch(addMovieToWant(details));
+    if (!isAuth) {
+      navigate("/login");
+    } else {
+      dispatch(addMovieToWant(details));
+    }
   };
   const addToWatched = () => {
-    dispatch(addMovieToWatched(details));
+    if (!isAuth) {
+      navigate("/login");
+    } else {
+      dispatch(addMovieToWatched(details));
+    }
   };
   const onClickBack = () => {
     navigate(-1);
