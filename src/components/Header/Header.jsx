@@ -1,12 +1,13 @@
 import React from "react";
 import {useState} from "react";
-import {NavLink, Link} from "react-router-dom";
+import {NavLink, Link, useNavigate} from "react-router-dom";
+import {useAuth} from "../../hooks/useAuth";
 import styles from "./Header.module.scss";
 
 import login from "./../../images/login.svg";
 import burger from "./../../images/burger.svg";
 import burgerClose from "./../../images/burger-close.svg";
-import Login from "../Login/Login";
+import Logout from "../Logout/Logout";
 
 const menuLinks = [
   {to: "/", name: "Search"},
@@ -16,10 +17,14 @@ const menuLinks = [
 
 const Header = () => {
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
-  const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const navigate = useNavigate();
+  const {isAuth} = useAuth();
 
-  const openLoginForm = () => {
-    setIsPopupOpened(true);
+  const onClickLoginBtn = () => {
+    if (!isAuth) {
+      navigate("/login");
+    }
+    return;
   };
 
   return (
@@ -40,15 +45,13 @@ const Header = () => {
                   <NavLink to={link.to}>{link.name}</NavLink>
                 </li>
               ))}
+              {isAuth && <Logout />}
             </ul>
           </nav>
           <div onClick={() => setIsBurgerOpened(!isBurgerOpened)} className={styles.burgerBtn}>
             <img src={isBurgerOpened ? burgerClose : burger} alt='burger btn' />
           </div>
-          <NavLink className={styles.login}>
-            <img onClick={openLoginForm} src={login} alt='login' />
-          </NavLink>
-          <Login isPopupOpened={isPopupOpened} setIsPopupOpened={setIsPopupOpened} />
+          <img onClick={onClickLoginBtn} className={[styles.login, isAuth ? styles.isAuth : ''].join(' ')} src={login} alt='login' />
         </div>
       </div>
     </header>
