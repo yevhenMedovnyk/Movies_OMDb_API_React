@@ -6,17 +6,7 @@ import MoviesList from "../../components/MoviesList/MoviesList";
 import {useEffect} from "react";
 
 const Want = () => {
-  const navigate = useNavigate();
-  const {isAuth} = useAuth();
   const {want} = useSelector((state) => state.movies);
-
-  useEffect(() => {
-    if (!isAuth) {
-      navigate("/login");
-    }
-  }, [isAuth]);
-	
-	
 
   return (
     <div className='container'>
