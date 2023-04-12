@@ -21,18 +21,13 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<Search />} />
-				  <Route path='want' element={
-					  <RequireAuth>
-						  <Want />
-					  </RequireAuth>} />
-          <Route path='watched' element={<RequireAuth>
-						  <Watched />
-					  </RequireAuth>} />
-          <Route path='movie/:id' element={<MovieDetails />} />
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Registration />} />
-          <Route path='*' element={<NotFound />} />
+        	<Route index element={<Search />} />
+			<Route path='want' element={<RequireAuth><Want /></RequireAuth>} />
+        	<Route path='watched' element={<RequireAuth><Watched /></RequireAuth>} />
+        	<Route path='movie/:id' element={<MovieDetails />} />
+       	 	<Route path='login' element={<Login />} />
+        	<Route path='register' element={<Registration />} />
+       	 	<Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
     </div>
