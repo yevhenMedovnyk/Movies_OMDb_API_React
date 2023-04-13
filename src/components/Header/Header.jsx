@@ -2,10 +2,11 @@ import React from "react";
 import {useState} from "react";
 import {NavLink, Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
+import {useSelector} from "react-redux";
 import styles from "./Header.module.scss";
 
-import login from "./../../images/login.svg";
 import burger from "./../../images/burger.svg";
+import login from "./../../images/login.svg";
 import burgerClose from "./../../images/burger-close.svg";
 import Logout from "../Logout/Logout";
 
@@ -16,9 +17,11 @@ const menuLinks = [
 ];
 
 const Header = () => {
+  const {avatarUrl} = useSelector((state) => state.user);
   const [isBurgerOpened, setIsBurgerOpened] = useState(false);
   const navigate = useNavigate();
-  const {isAuth} = useAuth();
+	const { isAuth } = useAuth();
+	
 
   const onClickLoginBtn = () => {
     if (!isAuth) {
@@ -51,7 +54,12 @@ const Header = () => {
           <div onClick={() => setIsBurgerOpened(!isBurgerOpened)} className={styles.burgerBtn}>
             <img src={isBurgerOpened ? burgerClose : burger} alt='burger btn' />
           </div>
-          <img onClick={onClickLoginBtn} className={[styles.login, isAuth ? styles.isAuth : ''].join(' ')} src={login} alt='login' />
+          <img
+            onClick={onClickLoginBtn}
+            className={[styles.login, isAuth ? styles.isAuth : ""].join(" ")}
+            src={isAuth ? avatarUrl : login}
+            alt='login'
+          />
         </div>
       </div>
     </header>

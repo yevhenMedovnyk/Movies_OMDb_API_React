@@ -5,6 +5,7 @@ const initialState = {
   email: getLocalStorage("user").email,
   token: getLocalStorage("user").token,
   id: getLocalStorage("user").id,
+  avatarUrl: getLocalStorage("user").avatarUrl,
 };
 
 const userSlice = createSlice({
@@ -16,6 +17,9 @@ const userSlice = createSlice({
       state.token = action.payload.token;
       state.id = action.payload.id;
     },
+    setUserAvatar(state, action) {
+      state.avatarUrl = action.payload.avatar;
+    },
     removeUser(state) {
       state.email = null;
       state.token = null;
@@ -24,5 +28,5 @@ const userSlice = createSlice({
   },
 });
 
-export const {setUser, removeUser} = userSlice.actions;
+export const {setUser, removeUser, setUserAvatar} = userSlice.actions;
 export default userSlice.reducer;
