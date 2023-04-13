@@ -12,6 +12,13 @@
 	padding: 2.3rem;
 	margin: 10rem 2rem 0 2rem;
 }
+.label {
+	width: 3rem;
+	margin-right: auto;
+	padding-left: 10%;
+	margin-bottom: 1rem;
+	cursor: pointer;
+}
 .close {
 	width: 2rem;
 	align-self: end;
@@ -42,6 +49,7 @@
 	}
 	&:disabled {
 		opacity: 0.3;
+		pointer-events: none;
 	}
 	@media (max-width: 575px) {
 		font-size: 1.4rem;

@@ -13,6 +13,7 @@ import FormInput from "../FormInput/FormInput";
 import styles from "./RegisterForm.module.scss";
 
 import close from "./../../images/burger-close.svg";
+import add from "./../../images/addFile.svg";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -132,13 +133,23 @@ const RegisterForm = () => {
         {inputs.map((input) => (
           <FormInput key={input.id} {...input} value={values[input.name]} onChange={handleChange} />
         ))}
-        <input type='file' onChange={handleChangeFileInput} />
+        <label className={styles.label} htmlFor='addAvatar'>
+          <img  src={add} style={{width: "30px"}} alt='add file' />
+        </label>
+        <input
+          id='addAvatar'
+          style={{display: "none"}}
+          type='file'
+          onChange={handleChangeFileInput}
+        />
         <div className={styles.btns}>
           <span className={styles.forget} to='#'>
             Already have an account? <Link to='/login'>Sign in</Link>
           </span>
           <button
-            disabled={!values.username || !values.password || !values.confirmPassword || progress < 100}
+            disabled={
+              !values.username || !values.password || !values.confirmPassword || progress < 100
+            }
             className={styles.loginBtn}
           >
             Register
