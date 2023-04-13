@@ -1,9 +1,14 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import {doc, setDoc} from "firebase/firestore";
+
+import {db, storage} from "../../firebase";
 import {useDispatch} from "react-redux";
-import {setUser} from "./../../features/userSlice";
+import {setUser, setUserAvatar} from "./../../features/userSlice";
 import FormInput from "../FormInput/FormInput";
 import styles from "./RegisterForm.module.scss";
 
@@ -18,31 +23,78 @@ const RegisterForm = () => {
     confirmPassword: "",
   });
 
+  const [avatar, setAvatar] = useState(null);
+  const {avatarUrl} = useSelector((state) => state.user);
+  const [progress, setProgress] = useState(null);
+
+  useEffect(() => {
+    const uploadAvatar = () => {
+      const name = new Date().getDate() + avatar.name;
+      const storageRef = ref(storage, name);
+      const uploadTask = uploadBytesResumable(storageRef, avatar);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          //  console.log("Upload is " + progress + "% done");
+          setProgress(progress);
+          switch (snapshot.state) {
+            case "paused":
+              //  console.log("Upload is paused");
+              break;
+            case "running":
+              //  console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        async () => {
+          const res = await getDownloadURL(uploadTask.snapshot.ref);
+          dispatch(setUserAvatar({avatar: res}));
+        },
+      );
+    };
+    avatar && uploadAvatar();
+  }, [avatar]);
+
   const handleChange = (e) => {
     setValues({...values, [e.target.name]: e.target.value});
   };
+  const handleChangeFileInput = (e) => {
+    setAvatar(e.target.files[0]);
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (values.username && values.password && values.confirmPassword) {
       const auth = getAuth();
-      console.log(auth);
-      createUserWithEmailAndPassword(auth, values.username, values.password)
-        .then(({user}) => {
-          console.log(user);
-          dispatch(
-            setUser({
-              email: user.email,
-              token: user.accessToken,
-              id: user.uid,
-            }),
-          );
-        })
-        .catch(console.error);
+      try {
+        const res = await createUserWithEmailAndPassword(auth, values.username, values.password);
+        dispatch(
+          setUser({
+            email: res.user.email,
+            token: res.user.accessToken,
+            id: res.user.uid,
+          }),
+        );
+        await setDoc(doc(db, "users", res.user.uid), {
+          email: res.user.email,
+          id: res.user.uid,
+          avatar: avatarUrl,
+        });
+      } catch (error) {
+        console.log(error);
+      }
       navigate("/");
     }
   };
+
   const inputs = [
     {
       id: 1,
@@ -80,12 +132,13 @@ const RegisterForm = () => {
         {inputs.map((input) => (
           <FormInput key={input.id} {...input} value={values[input.name]} onChange={handleChange} />
         ))}
+        <input type='file' onChange={handleChangeFileInput} />
         <div className={styles.btns}>
           <span className={styles.forget} to='#'>
             Already have an account? <Link to='/login'>Sign in</Link>
           </span>
           <button
-            disabled={!values.username || !values.password || !values.confirmPassword ? true : false}
+            disabled={!values.username || !values.password || !values.confirmPassword || progress < 100}
             className={styles.loginBtn}
           >
             Register
