@@ -12,6 +12,9 @@ import {
 } from "../../features/movieSlice";
 import {movieApiWidthId} from "../../services/movieApi";
 import {useAuth} from "../../hooks/useAuth";
+import {addDoc, collection} from "firebase/firestore";
+
+import {db} from "../../firebase";
 
 import remove from "./../../images/trash.svg";
 
@@ -22,20 +25,35 @@ const MovieDetails = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
   const {details, want, watched} = useSelector((state) => state.movies);
+  const user = useSelector((state) => state.user);
   const {isAuth} = useAuth();
 
-  const addToWant = () => {
+  const addToWant = async () => {
     if (!isAuth) {
       navigate("/login");
     } else {
-      dispatch(addMovieToWant(details));
+      //  dispatch(addMovieToWant(details));
+      await addDoc(collection(db, "want"), {
+        userId: user.id,
+        Title: details.Title,
+        Year: details.Year,
+        Poster: details.Poster,
+        imdbID: details.imdbID,
+      });
     }
   };
-  const addToWatched = () => {
+  const addToWatched = async () => {
     if (!isAuth) {
       navigate("/login");
     } else {
-      dispatch(addMovieToWatched(details));
+      //dispatch(addMovieToWatched(details));
+      await addDoc(collection(db, "watched"), {
+        userId: user.id,
+        Title: details.Title,
+        Year: details.Year,
+        Poster: details.Poster,
+        imdbID: details.imdbID,
+      });
     }
   };
   const onClickBack = () => {
