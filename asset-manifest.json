@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Movies_OMDb_API_React/static/css/main.9e0ad1d0.css",
-    "main.js": "/Movies_OMDb_API_React/static/js/main.82fe4500.js",
+    "main.css": "/Movies_OMDb_API_React/static/css/main.48ae73a1.css",
+    "main.js": "/Movies_OMDb_API_React/static/js/main.4dde2f3f.js",
     "static/media/login.svg": "/Movies_OMDb_API_React/static/media/login.862b407eb4181075b4825587fd0d236c.svg",
     "static/media/addFile.svg": "/Movies_OMDb_API_React/static/media/addFile.257f33ce406b9bdb6a8e52b51c57371e.svg",
     "index.html": "/Movies_OMDb_API_React/index.html",
@@ -9,11 +9,11 @@
     "static/media/trash.svg": "/Movies_OMDb_API_React/static/media/trash.7381b4eca635436f1140bae377ae983e.svg",
     "static/media/burger-close.svg": "/Movies_OMDb_API_React/static/media/burger-close.94299de3a5a7848f2b15177b6490ee7d.svg",
     "static/media/burger.svg": "/Movies_OMDb_API_React/static/media/burger.fff5ac4d9878f1e00c318de0ff60f143.svg",
-    "main.9e0ad1d0.css.map": "/Movies_OMDb_API_React/static/css/main.9e0ad1d0.css.map",
-    "main.82fe4500.js.map": "/Movies_OMDb_API_React/static/js/main.82fe4500.js.map"
+    "main.48ae73a1.css.map": "/Movies_OMDb_API_React/static/css/main.48ae73a1.css.map",
+    "main.4dde2f3f.js.map": "/Movies_OMDb_API_React/static/js/main.4dde2f3f.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e0ad1d0.css",
-    "static/js/main.82fe4500.js"
+    "static/css/main.48ae73a1.css",
+    "static/js/main.4dde2f3f.js"
   ]
 }
