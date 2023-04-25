@@ -12,4 +12,3 @@ export const searchApi = (searchParams, currentPage, type) =>
 
 export const movieApiWithId = (id) => `${API_ROOT}?${id ? API_ID : ""}${id}${API_KEY}`;
 
-console.log(API_KEY);
