@@ -11,7 +11,7 @@ const MoviesList = ({movies}) => {
           Title={movie.Title}
           Year={movie.Year}
           Poster={movie.Poster}
-          id={movie.imdbID}
+			  id={movie.imdbID}
         />
       ))}
     </ul>

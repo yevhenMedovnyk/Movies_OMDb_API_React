@@ -1,6 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
-import { getLocalStorage } from "../services/localStorage";
 
 export const fetchMovie = createAsyncThunk("movies/fetchMovie", async (url, {rejectWithValue}) => {
   try {
@@ -12,11 +11,9 @@ export const fetchMovie = createAsyncThunk("movies/fetchMovie", async (url, {rej
   }
 });
 
-
-
 const initialState = {
-  want: getLocalStorage('want'),
-  watched: getLocalStorage('watched'),
+  want: [],
+  watched: [],
   details: {},
   status: null,
   error: null,
@@ -33,12 +30,18 @@ export const movieSlice = createSlice({
         state.watched = state.watched.filter((item) => item.imdbID !== action.payload.imdbID);
       }
     },
+    clearWantList: (state) => {
+      state.want = [];
+    },
     addMovieToWatched: (state, action) => {
       const findMovie = state.watched.find((item) => item.imdbID === action.payload.imdbID);
       if (!findMovie) {
         state.watched.push(action.payload);
         state.want = state.want.filter((item) => item.imdbID !== action.payload.imdbID);
       }
+    },
+    clearWatchedList: (state) => {
+      state.watched = [];
     },
     removeFromWant: (state, action) => {
       state.want = state.want.filter((item) => item.imdbID !== action.payload);
@@ -63,7 +66,14 @@ export const movieSlice = createSlice({
   },
 });
 
-export const {movieDetails, addMovieToWant, removeFromWant, addMovieToWatched, removeFromWatched} =
-  movieSlice.actions;
+export const {
+  movieDetails,
+  addMovieToWant,
+  removeFromWant,
+  addMovieToWatched,
+  removeFromWatched,
+  clearWantList,
+  clearWatchedList,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;

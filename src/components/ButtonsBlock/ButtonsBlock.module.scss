@@ -1,0 +1,48 @@
+@import "./../../style/vars";
+
+.btns {
+	display: flex;
+	column-gap: 1rem;
+}
+.addBtn {
+	color: $secondary-font-color;
+	font-size: 1.8rem;
+	border: 1px solid $secondary-font-color;
+	padding: 0.6em 0.4em;
+	border-radius: 3px;
+	transition: 0.2s;
+	&:hover {
+		color: #a98f1d;
+		border: 1px solid #a98f1d;
+	}
+	&:disabled {
+		opacity: 0.4;
+		cursor: default;
+		&:hover {
+			color: $secondary-font-color;
+			border: 1px solid $secondary-font-color;
+		}
+	}
+	@media (max-width: 1024px) {
+		font-size: 1.3rem;
+	}
+	@media (max-width: 775px) {
+		font-size: 1rem;
+	}
+}
+.remove {
+	margin-left: 2rem;
+	width: 1.8rem;
+	transition: 0.3s;
+	opacity: 0.7;
+	cursor: pointer;
+	&:hover {
+		opacity: 1;
+	}
+	@media (max-width: 1024px) {
+		margin-left: 1.4rem;
+	}
+	@media (max-width: 775px) {
+		width: 1.4rem;
+	}
+}
