@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import styles from "./MovieDetails.module.scss";
 
 import {addMovieToWant, addMovieToWatched, fetchMovie} from "../../redux/slices/movieSlice";
-import {movieApiWidthId} from "../../services/movieApi";
+import {movieApiWithId} from "../../services/movieApi";
 import {useAuth} from "../../hooks/useAuth";
 import {deleteDoc, doc, setDoc} from "firebase/firestore";
 
@@ -62,7 +62,7 @@ const MovieDetails = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchMovie(movieApiWidthId(id)));
+    dispatch(fetchMovie(movieApiWithId(id)));
   }, []);
 
   useEffect(() => {
