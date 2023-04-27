@@ -3,7 +3,7 @@
 .wrapper {
 	display: grid;
 	grid-template: 22rem min-content max-content / 1fr;
-	@media (max-width: 462px) {
+	@media (max-width: 375px) {
 		grid-template: min-content min-content max-content / 1fr;
 	}
 }
@@ -29,6 +29,9 @@
 	}
 	@media (max-width: 462px) {
 		border: none;
+	}
+	@media (max-width: 375px) {
+		margin-bottom: 0;
 	}
 }
 .title {
