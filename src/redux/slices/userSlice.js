@@ -1,11 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getLocalStorage} from "../services/localStorage";
+import {getLocalStorage} from "../../services/localStorage";
 
 const initialState = {
-  email: getLocalStorage("user").email,
-  token: getLocalStorage("user").token,
-  id: getLocalStorage("user").id,
-  avatarUrl: getLocalStorage("user").avatarUrl,
+  email: getLocalStorage("user").email || null,
+  token: getLocalStorage("user").token || null,
+  id: getLocalStorage("user").id || null,
+  avatarUrl: getLocalStorage("user").avatarUrl || null,
 };
 
 const userSlice = createSlice({
@@ -24,6 +24,7 @@ const userSlice = createSlice({
       state.email = null;
       state.token = null;
       state.id = null;
+      state.avatarUrl = null;
     },
   },
 });

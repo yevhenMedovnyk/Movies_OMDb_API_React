@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import {searchMovies, setInputValue, setType, setCategoryId} from "./../../features/searchSlice";
+import {searchMovies, setInputValue, setType, setCategoryId} from "./../../redux/slices/searchSlice";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import styles from "./Search.module.scss";
 
@@ -27,7 +27,9 @@ const Search = () => {
   const debouncedValue = useCallback(useDebounce(inputValue, 400));
 
   useEffect(() => {
-    dispatch(searchMovies(searchApi(debouncedValue, currentPage, type)));
+    if (inputValue) {
+      dispatch(searchMovies(searchApi(debouncedValue, currentPage, type)));
+    }
   }, [dispatch, currentPage, debouncedValue, type]);
 
   const handleInputChange = (e) => {
@@ -36,9 +38,8 @@ const Search = () => {
   };
 
   const onClickClear = () => {
-	  dispatch(setInputValue(""));
-	  inputRef.current.focus();
-	  
+    dispatch(setInputValue(""));
+    inputRef.current.focus();
   };
 
   const handleChangePage = (_, pageNum) => {

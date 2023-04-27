@@ -5,7 +5,7 @@ import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import {getDoc, doc} from "firebase/firestore";
 import {db} from "../../firebase";
 import {useDispatch} from "react-redux";
-import {setUser, setUserAvatar} from "./../../features/userSlice";
+import {setUser, setUserAvatar} from "./../../redux/slices/userSlice";
 
 import styles from "./LoginForm.module.scss";
 

@@ -8,7 +8,7 @@ import {doc, setDoc} from "firebase/firestore";
 
 import {db, storage} from "../../firebase";
 import {useDispatch} from "react-redux";
-import {setUser, setUserAvatar} from "./../../features/userSlice";
+import {setUser, setUserAvatar} from "./../../redux/slices/userSlice";
 import FormInput from "../FormInput/FormInput";
 import styles from "./RegisterForm.module.scss";
 

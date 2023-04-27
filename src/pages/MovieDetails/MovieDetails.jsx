@@ -3,17 +3,15 @@ import {useParams, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./MovieDetails.module.scss";
 
-import {fetchMovie} from "../../features/movieSlice";
-import {
-  addMovieToWant,
-  addMovieToWatched,
-  removeFromWant,
-  removeFromWatched,
-} from "../../features/movieSlice";
-import {movieApiWidthId} from "../../services/movieApi";
+import {addMovieToWant, addMovieToWatched, fetchMovie} from "../../redux/slices/movieSlice";
+import {movieApiWithId} from "../../services/movieApi";
 import {useAuth} from "../../hooks/useAuth";
+import {deleteDoc, doc, setDoc} from "firebase/firestore";
 
-import remove from "./../../images/trash.svg";
+import {db} from "../../firebase";
+
+import InfoList from "../../components/InfoList/InfoList";
+import ButtonsBlock from "../../components/ButtonsBlock/ButtonsBlock";
 
 const MovieDetails = () => {
   const navigate = useNavigate();
@@ -22,27 +20,49 @@ const MovieDetails = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
   const {details, want, watched} = useSelector((state) => state.movies);
+  const user = useSelector((state) => state.user);
   const {isAuth} = useAuth();
 
-  const addToWant = () => {
+  const removeFromFirebase = async (list) => {
+    await deleteDoc(doc(db, list, details.imdbID));
+  };
+
+  const addToWant = async () => {
     if (!isAuth) {
       navigate("/login");
     } else {
+      await setDoc(doc(db, "want", details.imdbID), {
+        userId: user.id,
+        Title: details.Title,
+        Year: details.Year,
+        Poster: details.Poster,
+        imdbID: details.imdbID,
+      });
       dispatch(addMovieToWant(details));
+      removeFromFirebase("watched");
     }
   };
-  const addToWatched = () => {
+  const addToWatched = async () => {
     if (!isAuth) {
       navigate("/login");
     } else {
+      await setDoc(doc(db, "watched", details.imdbID), {
+        userId: user.id,
+        Title: details.Title,
+        Year: details.Year,
+        Poster: details.Poster,
+        imdbID: details.imdbID,
+      });
       dispatch(addMovieToWatched(details));
+      removeFromFirebase("want");
     }
   };
   const onClickBack = () => {
     navigate(-1);
   };
+
   useEffect(() => {
-    dispatch(fetchMovie(movieApiWidthId(id)));
+    dispatch(fetchMovie(movieApiWithId(id)));
   }, []);
 
   useEffect(() => {
@@ -77,75 +97,21 @@ const MovieDetails = () => {
                 <span className={styles.ratingValue}>{details.imdbRating}</span> / 10
               </p>
             </div>
-            <div className={styles.btns}>
-              <button
-                disabled={inWatched ? true : false}
-                onClick={addToWatched}
-                className={styles.addBtn}
-              >
-                Watched
-              </button>
-              <button
-                disabled={inWant ? true : false}
-                onClick={addToWant}
-                className={styles.addBtn}
-              >
-                Want
-              </button>
-            </div>
-
-            {inWatched && (
-              <img
-                onClick={() => dispatch(removeFromWatched(id))}
-                className={styles.remove}
-                src={remove}
-                alt='remove'
-              />
-            )}
-            {inWant && (
-              <img
-                onClick={() => dispatch(removeFromWant(id))}
-                className={styles.remove}
-                src={remove}
-                alt='remove'
-              />
-            )}
+            <ButtonsBlock
+              inWant={inWant}
+              addToWant={addToWant}
+              inWatched={inWatched}
+              addToWatched={addToWatched}
+              id={id}
+              removeFromFirebase={removeFromFirebase}
+            />
           </div>
         </div>
         <div className={styles.body}>
           <div className={styles.poster}>
             <img src={details.Poster} alt='' />
           </div>
-          <div className={styles.info}>
-            <p>
-              Director:
-              <span> {details.Director}</span>
-            </p>
-            <p>
-              Actors:
-              <span> {details.Actors}</span>
-            </p>
-            <p>
-              Writer:
-              <span> {details.Writer}</span>
-            </p>
-            <p>
-              Awards:
-              <span> {details.Awards}</span>
-            </p>
-            <p>
-              Language:
-              <span> {details.Language}</span>
-            </p>
-            <p>
-              Country:
-              <span> {details.Country}</span>
-            </p>
-            <p>
-              Plot:
-              <span> {details.Plot}</span>
-            </p>
-          </div>
+          <InfoList details={details} />
         </div>
         <button onClick={onClickBack} className={styles.back}>
           Back

@@ -1,9 +1,6 @@
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {useAuth} from "./../../hooks/useAuth";
+import { useSelector} from "react-redux";
 
 import MoviesList from "../../components/MoviesList/MoviesList";
-import {useEffect} from "react";
 
 const Want = () => {
   const {want} = useSelector((state) => state.movies);

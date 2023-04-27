@@ -10,4 +10,5 @@ export const searchApi = (searchParams, currentPage, type) =>
     searchParams ? API_SEARCH_PARAMS : ""
   }${searchParams}${API_KEY}${API_TYPE}${type}${API_PAGE}${currentPage}`;
 
-export const movieApiWidthId = (id) => `${API_ROOT}?${id ? API_ID : ""}${id}${API_KEY}`;
+export const movieApiWithId = (id) => `${API_ROOT}?${id ? API_ID : ""}${id}${API_KEY}`;
+

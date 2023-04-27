@@ -1,4 +1,4 @@
-import {useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import MoviesList from "../../components/MoviesList/MoviesList";
 
 const Watched = () => {
