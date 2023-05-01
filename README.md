@@ -1,7 +1,10 @@
 ## Movies_OMDb React Application
 This project is created on ReactJS using "OMDb API"
 
-On this site, you can search for movies and add them to your "want" or "watched" list
+Application for searching movies and series.
+Technologies: ReactJS, Redux Toolkit, SASS, REST API, AXIOS, Firebase, and Material UI. 
+The project implements the ability to search by two categories, add to the list of favorites and the list of already watched movies, etc.
+
 - You can try it here: [Movies_OMDb](https://yevhenmedovnyk.github.io/Movies_OMDb_API_React/)
 
 ---
@@ -12,6 +15,6 @@ On this site, you can search for movies and add them to your "want" or "watched"
 - Axios
 - REST API
 - Firebase
-- MUI
+- Material UI
 - SASS
 - Responsive web design
